@@ -9,6 +9,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
 
+
 # These are the configuration parameters that define the application's behavior
 # and which are independent from the underlying technical infrastructure
 # See http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -16,6 +17,7 @@ parameters:
     # This parameter defines the codes of the locales (languages) enabled in the application
     app_locales: en|fr|de|es|cs|nl|ru|uk|ro|pt_BR|pl|it|ja|id|ca
     app.notifications.email_sender: anonymous@example.com
+
 
 # Basic configuration for the Symfony framework features
 framework:
@@ -25,6 +27,7 @@ framework:
     # and any custom configuration string, such as: "phpstorm://open?file=%%f&line=%%l"
     # See http://symfony.com/doc/current/reference/configuration/framework.html#ide
     ide: sublime
+
 
     # When using the HTTP Cache, ESI allows to render page fragments separately
     # and with different cache configurations for each fragment
@@ -50,6 +53,7 @@ framework:
     http_method_override: true
     assets: ~
 
+
 # Twig Configuration (used for rendering application templates)
 twig:
     debug:            "%kernel.debug%"
@@ -57,6 +61,7 @@ twig:
     form_themes:
         - "bootstrap_3_layout.html.twig"
         - "form/fields.html.twig"
+
 
 # Assetic Configuration (used for managing web assets: CSS, JavaScript, Sass, etc.)
 assetic:
@@ -70,6 +75,7 @@ assetic:
             # the formatter must be the FQCN (don't use the 'compressed' value)
             formatter: "Leafo\\ScssPhp\\Formatter\\Compressed"
 
+
 # Doctrine Configuration (used to access databases and manipulate their information)
 doctrine:
     dbal:
@@ -77,11 +83,18 @@ doctrine:
         # them from the app/config/parameters.yml file. The reason is that config.yml
         # stores options that change the application behavior and parameters.yml
         # stores options that change from one server to another
-        url: "%database_url%"
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+
 
 # Swiftmailer Configuration (used to send emails)
 swiftmailer:
