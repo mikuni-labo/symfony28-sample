@@ -48,20 +48,21 @@ class LoadFixtures implements FixtureInterface, ContainerAwareInterface
     {
         $passwordEncoder = $this->container->get('security.password_encoder');
 
-        $johnUser = new User();
-        $johnUser->setUsername('john_user');
-        $johnUser->setEmail('john_user@symfony.com');
-        $encodedPassword = $passwordEncoder->encodePassword($johnUser, 'kitten');
-        $johnUser->setPassword($encodedPassword);
-        $manager->persist($johnUser);
+        $User = new User();
+        $User->setUsername('john_user');
+        $User->setEmail('john_user@symfony.com');
+        $User->setRoles(array('ROLE_USER'));
+        $encodedPassword = $passwordEncoder->encodePassword($User, 'kitten');
+        $User->setPassword($encodedPassword);
+        $manager->persist($User);
 
-        $annaAdmin = new User();
-        $annaAdmin->setUsername('anna_admin');
-        $annaAdmin->setEmail('anna_admin@symfony.com');
-        $annaAdmin->setRoles(array('ROLE_ADMIN'));
-        $encodedPassword = $passwordEncoder->encodePassword($annaAdmin, 'kitten');
-        $annaAdmin->setPassword($encodedPassword);
-        $manager->persist($annaAdmin);
+        $Admin = new User();
+        $Admin->setUsername('anna_admin');
+        $Admin->setEmail('anna_admin@symfony.com');
+        $Admin->setRoles(array('ROLE_ADMIN'));
+        $encodedPassword = $passwordEncoder->encodePassword($Admin, 'kitten');
+        $Admin->setPassword($encodedPassword);
+        $manager->persist($Admin);
 
         $manager->flush();
     }

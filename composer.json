@@ -13,6 +13,7 @@
         "doctrine/doctrine-bundle"             : "~1.5",
         "doctrine/doctrine-fixtures-bundle"    : "~2.2",
         "doctrine/orm"                         : "~2.4",
+        "doctrine/doctrine-migrations-bundle"  : "dev-master",
         "erusev/parsedown"                     : "~1.5",
         "ezyang/htmlpurifier"                  : "~4.7",
         "incenteev/composer-parameter-handler" : "~2.1",
